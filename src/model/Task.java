@@ -41,35 +41,27 @@ public class Task {
     }
 
     public int getId() {
-        return this.id;
+        return id;
     }
 
-    public void setId(int id) {
-        this.id = id;
+    public String getNome() {
+        return nome;
     }
 
     public LocalDate getDataTermino() {
-        return this.dataTermino;
+        return dataTermino;
     }
 
-    public void setDataTermino(LocalDate dataTermino) {
-        this.dataTermino = dataTermino;
+    public int getPrioridade() {
+        return prioridade;
     }
 
     public String getCategoria() {
-        return this.categoria;
-    }
-
-    public void setCategoria(String categoria) {
-        this.categoria = categoria;
+        return categoria;
     }
 
     public Status getStatus() {
-        return this.status;
-    }
-
-    public void setStatus(Status status) {
-        this.status = status;
+        return status;
     }
 
     public String toString() {
