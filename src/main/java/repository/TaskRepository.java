@@ -1,4 +1,4 @@
-package repository;
+package main.java.repository;
 
 import main.java.model.Status;
 import main.java.model.Task;

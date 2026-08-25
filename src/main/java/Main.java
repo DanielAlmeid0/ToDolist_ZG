@@ -1,3 +1,5 @@
+package main.java;
+
 import main.java.persistence.TaskFileStorage;
 import main.java.repository.TaskRepository;
 import main.java.ui.ConsoleMenu;
