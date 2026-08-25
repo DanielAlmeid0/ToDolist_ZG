@@ -24,9 +24,20 @@ public class TaskRepository {
                 task.getStatus());
 
 
-        tasks.add(salva);
         proximoId++;
+
+        int posicao = encontrarPosicaoIdeal(salva.getPrioridade());
+        tasks.add(posicao, salva);
         return salva;
+    }
+
+    private int encontrarPosicaoIdeal(int prioridade) {
+        int indice = 0;
+
+        while (indice < tasks.size() && tasks.get(indice).getPrioridade() <= prioridade) {
+            indice++;
+        }
+        return indice;
     }
 
     public List<Task> listarTodas() {
