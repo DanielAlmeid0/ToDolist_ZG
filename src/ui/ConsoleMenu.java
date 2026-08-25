@@ -5,6 +5,7 @@ import model.Status;
 import model.Task;
 
 import java.time.LocalDate;
+import java.util.List;
 import java.util.Scanner;
 
 public class ConsoleMenu {
@@ -36,6 +37,15 @@ public class ConsoleMenu {
                     case "3":
                         removerTarefa();
                         break;
+                    case "4":
+                        listarPorCategoria();
+                        break;
+                    case "5":
+                        listarPorPrioridade();
+                        break;
+                    case "6":
+                        listarPorStatus();
+                        break;
                     case "0":
                         continuar = false;
                         System.out.println("Até logo!");
@@ -57,6 +67,9 @@ public class ConsoleMenu {
         System.out.println("1 - Criar tarefa");
         System.out.println("2 - Listar tarefas");
         System.out.println("3 - Remover tarefas");
+        System.out.println("4 - Listar por categoria");
+        System.out.println("5 - Listar por prioridade");
+        System.out.println("6 - Listar por status");
         System.out.println("0 - Sair");
         System.out.print("Escolha uma opção: ");
     }
@@ -100,6 +113,37 @@ public class ConsoleMenu {
             System.out.println(">> Tarefa removida.");
         } else {
             System.out.println(">> Nenhuma tarefa encontrada com esse id.");
+        }
+    }
+
+    private void listarPorCategoria() {
+        System.out.println("Categoria: ");
+        String categoria = scanner.nextLine();
+        List<Task> resultado = repository.listarPorCategoria(categoria);
+        imprimirLista(resultado);
+    }
+
+    private void listarPorPrioridade() {
+        System.out.print("Prioridade (1 a 5): ");
+        int prioridade = Integer.parseInt(scanner.nextLine().trim());
+        List<Task> resultado = repository.listarPorPrioridade(prioridade);
+        imprimirLista(resultado);
+    }
+
+    private void listarPorStatus() {
+        System.out.printf("Status (TODO, DOING ou DONE): ");
+        Status status = Status.valueOf(scanner.nextLine().trim().toUpperCase());
+        List<Task> resultado = repository.listarPorStatus(status);
+        imprimirLista(resultado);
+    }
+    private void imprimirLista(List<Task> tarefas) {
+        System.out.println();
+        if (tarefas.isEmpty()) {
+            System.out.println("(nenhuma tarefa encontrada)");
+            return;
+        }
+        for (Task t : tarefas) {
+            System.out.println(t);
         }
     }
 }

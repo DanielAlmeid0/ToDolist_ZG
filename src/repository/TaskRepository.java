@@ -1,9 +1,11 @@
 package repository;
 
+import model.Status;
 import model.Task;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.stream.Collectors;
 
 public class TaskRepository {
 
@@ -34,4 +36,18 @@ public class TaskRepository {
     public boolean removeerPorId(int id) {
         return tasks.removeIf(t -> t.getId() == id);
     }
+
+    public List<Task> listarPorCategoria(String categoria) {
+        return tasks.stream().filter(t -> t.getCategoria() == categoria).collect(Collectors.toList());
+    }
+
+    public List<Task> listarPorPrioridade(int prioridade) {
+        return tasks.stream().filter(t -> t.getPrioridade() == prioridade).collect(Collectors.toList());
+    }
+
+    public List<Task> listarPorStatus(Status status) {
+        return tasks.stream().filter(t -> t.getStatus() == status).collect(Collectors.toList());
+    }
+
+
 }
