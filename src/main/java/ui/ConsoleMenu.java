@@ -1,8 +1,8 @@
 package ui;
 
-import repository.TaskRepository;
-import model.Status;
-import model.Task;
+import main.java.repository.TaskRepository;
+import main.java.model.Status;
+import main.java.model.Task;
 
 import java.time.LocalDate;
 import java.util.List;

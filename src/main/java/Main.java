@@ -1,6 +1,6 @@
-import persistence.TaskFileStorage;
-import repository.TaskRepository;
-import ui.ConsoleMenu;
+import main.java.persistence.TaskFileStorage;
+import main.java.repository.TaskRepository;
+import main.java.ui.ConsoleMenu;
 
 import java.nio.file.Path;
 

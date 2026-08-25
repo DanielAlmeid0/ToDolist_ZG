@@ -1,7 +1,7 @@
 package persistence;
 
-import model.Status;
-import model.Task;
+import main.java.model.Status;
+import main.java.model.Task;
 
 import java.io.IOException;
 import java.io.UncheckedIOException;

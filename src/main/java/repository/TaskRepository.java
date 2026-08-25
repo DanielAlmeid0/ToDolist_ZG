@@ -1,8 +1,8 @@
 package repository;
 
-import model.Status;
-import model.Task;
-import persistence.TaskFileStorage;
+import main.java.model.Status;
+import main.java.model.Task;
+import main.java.persistence.TaskFileStorage;
 
 import java.util.ArrayList;
 import java.util.List;
