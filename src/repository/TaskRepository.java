@@ -2,6 +2,7 @@ package repository;
 
 import model.Status;
 import model.Task;
+import persistence.TaskFileStorage;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -11,8 +12,23 @@ public class TaskRepository {
 
 
     private final List<Task> tasks =  new ArrayList<>();
-
     private int proximoId = 1;
+    private final TaskFileStorage storage;
+
+    public TaskRepository(TaskFileStorage storage) {
+        this.storage = storage;
+
+        List<Task> carregadas = storage.carregarTodas();
+        tasks.addAll(carregadas);
+
+        int maiorId = 0;
+        for (Task t : carregadas) {
+            if (t.getId() > maiorId) {
+                maiorId = t.getId();
+            }
+        }
+        this.proximoId = maiorId + 1;
+    }
 
     public Task criar(Task task) {
         Task salva = new Task(
@@ -28,6 +44,8 @@ public class TaskRepository {
 
         int posicao = encontrarPosicaoIdeal(salva.getPrioridade());
         tasks.add(posicao, salva);
+
+        storage.salvarTodas(tasks);
         return salva;
     }
 
@@ -45,11 +63,17 @@ public class TaskRepository {
     }
 
     public boolean removeerPorId(int id) {
-        return tasks.removeIf(t -> t.getId() == id);
+        boolean removeu = tasks.removeIf(t -> t.getId() == id);
+        if (removeu) {
+            storage.salvarTodas(tasks);
+        }
+        return removeu;
     }
 
     public List<Task> listarPorCategoria(String categoria) {
-        return tasks.stream().filter(t -> t.getCategoria() == categoria).collect(Collectors.toList());
+        return tasks.stream()
+                .filter(t -> t.getCategoria().equalsIgnoreCase(categoria))
+                .collect(Collectors.toList());
     }
 
     public List<Task> listarPorPrioridade(int prioridade) {

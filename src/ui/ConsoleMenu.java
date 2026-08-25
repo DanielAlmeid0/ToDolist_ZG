@@ -76,7 +76,7 @@ public class ConsoleMenu {
 
     private void criarTarefa() {
         System.out.print("Nome: ");
-        String nome = scanner.nextLine();
+        String nome = scanner.nextLine().trim();
 
         System.out.print("Data de término (yyyy-MM-dd, ex: 2026-09-01): ");
         LocalDate dataTermino = LocalDate.parse(scanner.nextLine().trim());
@@ -85,7 +85,7 @@ public class ConsoleMenu {
         int prioridade = Integer.parseInt(scanner.nextLine().trim());
 
         System.out.print("Categoria: ");
-        String categoria = scanner.nextLine();
+        String categoria = scanner.nextLine().trim();
 
         System.out.print("Status (TODO, DOING ou DONE): ");
         Status status = Status.valueOf(scanner.nextLine().trim().toUpperCase());
@@ -118,7 +118,7 @@ public class ConsoleMenu {
 
     private void listarPorCategoria() {
         System.out.println("Categoria: ");
-        String categoria = scanner.nextLine();
+        String categoria = scanner.nextLine().trim();
         List<Task> resultado = repository.listarPorCategoria(categoria);
         imprimirLista(resultado);
     }
