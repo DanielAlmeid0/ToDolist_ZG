@@ -1,0 +1,304 @@
+
+:root {
+  /* Base */
+  --cor-fundo: #EEF1F6;
+  --cor-superficie: #FFFFFF;
+  --cor-texto: #1D2433;
+  --cor-texto-suave: #5C6478;
+  --cor-borda: #D7DCE6;
+
+
+  --prioridade-1: #4C7FD9;
+  --prioridade-2: #4A9A8F;
+  --prioridade-3: #C79A2C;
+  --prioridade-4: #D2732A;
+  --prioridade-5: #C43D3D;
+
+  /* Status */
+  --status-todo: #7A8296;
+  --status-doing: #B8862E;
+  --status-done: #3E8E5B;
+
+  --cor-erro: #C43D3D;
+  --cor-acao: #2C4A7C;
+  --cor-acao-hover: #21395F;
+
+  --raio: 6px;
+  --sombra: 0 1px 3px rgba(29, 36, 51, 0.08);
+
+  font-size: 16px;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  background: var(--cor-fundo);
+  color: var(--cor-texto);
+  font-family: "Segoe UI", "Helvetica Neue", Arial, sans-serif;
+  line-height: 1.5;
+}
+
+/* ---------- Cabeçalho ---------- */
+
+.app-header {
+  padding: 2.5rem 1.5rem 1.5rem;
+  text-align: center;
+  max-width: 760px;
+  margin: 0 auto;
+}
+
+.app-header h1 {
+  margin: 0 0 0.35rem;
+  font-size: 1.75rem;
+  font-weight: 700;
+  letter-spacing: -0.01em;
+}
+
+.subtitle {
+  margin: 0;
+  color: var(--cor-texto-suave);
+  font-size: 0.95rem;
+}
+
+/* ---------- Layout geral ---------- */
+
+.app-main {
+  max-width: 760px;
+  margin: 0 auto;
+  padding: 0 1.5rem 3rem;
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+section {
+  background: var(--cor-superficie);
+  border: 1px solid var(--cor-borda);
+  border-radius: var(--raio);
+  padding: 1.5rem;
+  box-shadow: var(--sombra);
+}
+
+section h2 {
+  margin: 0 0 1.1rem;
+  font-size: 1.15rem;
+  font-weight: 600;
+}
+
+/* ---------- Formulário ---------- */
+
+.field {
+  display: flex;
+  flex-direction: column;
+  gap: 0.35rem;
+  margin-bottom: 1rem;
+}
+
+.field-row {
+  display: flex;
+  gap: 1rem;
+}
+
+.field-row .field {
+  flex: 1;
+}
+
+.field-small {
+  flex: 0 0 150px;
+}
+
+label {
+  font-size: 0.85rem;
+  font-weight: 600;
+  color: var(--cor-texto-suave);
+}
+
+input[type="text"],
+input[type="number"],
+input[type="datetime-local"],
+select {
+  font: inherit;
+  padding: 0.55rem 0.65rem;
+  border: 1px solid var(--cor-borda);
+  border-radius: var(--raio);
+  background: var(--cor-superficie);
+  color: var(--cor-texto);
+}
+
+input:focus-visible,
+select:focus-visible,
+button:focus-visible {
+  outline: 2px solid var(--cor-acao);
+  outline-offset: 1px;
+}
+
+.field-error {
+  min-height: 1.1em;
+  font-size: 0.8rem;
+  color: var(--cor-erro);
+}
+
+.form-actions {
+  display: flex;
+  gap: 0.75rem;
+  margin-top: 0.5rem;
+}
+
+button {
+  font: inherit;
+  font-weight: 600;
+  padding: 0.6rem 1.25rem;
+  border-radius: var(--raio);
+  border: 1px solid transparent;
+  cursor: pointer;
+}
+
+#btn-salvar {
+  background: var(--cor-acao);
+  color: #fff;
+}
+
+#btn-salvar:hover {
+  background: var(--cor-acao-hover);
+}
+
+.btn-secundario {
+  background: transparent;
+  border-color: var(--cor-borda);
+  color: var(--cor-texto-suave);
+}
+
+.btn-secundario:hover {
+  background: var(--cor-fundo);
+}
+
+/* ---------- Lista de tarefas ---------- */
+
+.lista-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  margin-bottom: 1.1rem;
+}
+
+.lista-header h2 {
+  margin: 0;
+}
+
+.filtro-status {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.filtro-status label {
+  margin: 0;
+  white-space: nowrap;
+}
+
+.filtro-status select {
+  padding: 0.4rem 0.55rem;
+}
+
+.tarefas-tabela {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 0.92rem;
+}
+
+.tarefas-tabela th {
+  text-align: left;
+  font-size: 0.78rem;
+  font-weight: 600;
+  color: var(--cor-texto-suave);
+  padding: 0.5rem 0.6rem;
+  border-bottom: 1px solid var(--cor-borda);
+}
+
+.tarefas-tabela td {
+  padding: 0.65rem 0.6rem;
+  border-bottom: 1px solid var(--cor-borda);
+  vertical-align: middle;
+}
+
+.tarefas-tabela tbody tr:hover {
+  background: var(--cor-fundo);
+}
+
+/* Selo de prioridade — o número carrega a cor da escala */
+.selo-prioridade {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 1.7rem;
+  height: 1.7rem;
+  border-radius: 50%;
+  color: #fff;
+  font-weight: 700;
+  font-size: 0.85rem;
+}
+
+.selo-prioridade[data-prioridade="1"] { background: var(--prioridade-1); }
+.selo-prioridade[data-prioridade="2"] { background: var(--prioridade-2); }
+.selo-prioridade[data-prioridade="3"] { background: var(--prioridade-3); }
+.selo-prioridade[data-prioridade="4"] { background: var(--prioridade-4); }
+.selo-prioridade[data-prioridade="5"] { background: var(--prioridade-5); }
+
+/* Selo de status — pílula discreta com a cor do status */
+.selo-status {
+  display: inline-block;
+  padding: 0.2rem 0.6rem;
+  border-radius: 999px;
+  font-size: 0.78rem;
+  font-weight: 600;
+  color: #fff;
+}
+
+.selo-status[data-status="TODO"] { background: var(--status-todo); }
+.selo-status[data-status="DOING"] { background: var(--status-doing); }
+.selo-status[data-status="DONE"] { background: var(--status-done); }
+
+.tarefas-tabela .acoes-linha {
+  display: flex;
+  gap: 0.4rem;
+  white-space: nowrap;
+}
+
+.tarefas-tabela .acoes-linha button {
+  padding: 0.35rem 0.7rem;
+  font-size: 0.82rem;
+}
+
+.lista-vazia {
+  text-align: center;
+  color: var(--cor-texto-suave);
+  padding: 2rem 0;
+  margin: 0;
+}
+
+/* ---------- Responsivo ---------- */
+
+@media (max-width: 560px) {
+  .field-row {
+    flex-direction: column;
+  }
+
+  .field-small {
+    flex-basis: auto;
+  }
+
+  .lista-header {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .tarefas-tabela {
+    display: block;
+    overflow-x: auto;
+    white-space: nowrap;
+  }
+}
