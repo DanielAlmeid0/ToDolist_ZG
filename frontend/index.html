@@ -4,35 +4,34 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Gerenciador de Tarefas</title>
+    <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    
-    <header class="cabeçalho app">
+
+    <header class="cabecalho-app">
         <h1>Gerenciador de Tarefas</h1>
-        <p class ="subtitle">Organize suas tarefas por prioridade, categoria e status</p>
+        <p class="subtitle">Organize suas tarefas por prioridade, categoria e status</p>
     </header>
 
-    <main class=""app-main>
+    <main class="app-main">
 
-        <section class="secao-formulario" aria-labelledby="titulo-formulario">
-            <h2 id="titulo-formulario">Nova tarefa</h2>
+        <section class="secao-formulario" aria-labelledby="form-title">
+            <h2 id="form-title">Nova tarefa</h2>
 
             <form id="task-form" novalidate>
                 <input type="hidden" id="task-id">
 
-
                 <div class="campo">
                     <label for="nome">Nome</label>
-                    <input type="text" id="nome" name="nome" required max="120">
+                    <input type="text" id="nome" name="nome" required maxlength="120">
                     <span class="campo-error" id="erro-nome" role="alert"></span>
                 </div>
-
 
                 <div class="linha">
                     <div class="campo">
                         <label for="dataTermino">Data e hora de término</label>
                         <input type="datetime-local" id="dataTermino" name="dataTermino" required>
-                        <span class="campo" id="erro-dataTermino" role="alert"></span>
+                        <span class="campo-error" id="erro-dataTermino" role="alert"></span>
                     </div>
 
                     <div class="campo campo-pequeno">
@@ -67,11 +66,11 @@
 
                 <div class="acoes-formulario">
                     <button type="submit" id="btn-salvar">Salvar tarefa</button>
-                    <button type="button" id="btn-cancelar", class="btn-secundario" hidden>Cancelar edição</button>
+                    <button type="button" id="btn-cancelar" class="btn-secundario" hidden>Cancelar edição</button>
                 </div>
             </form>
         </section>
-        
+
         <section class="lista-section" aria-labelledby="lista-title">
             <div class="lista-header">
                 <h2 id="lista-title">Tarefas</h2>
@@ -82,22 +81,23 @@
                         <option value="TODOS">Todos</option>
                         <option value="TODO">A fazer</option>
                         <option value="DOING">Em andamento</option>
-                        <option value="DONE">Concluida</option>
+                        <option value="DONE">Concluída</option>
                     </select>
                 </div>
             </div>
 
-            <table class="tarefa-tabela">
+            <table class="tarefas-tabela">
                 <thead>
                     <tr>
                         <th>Nome</th>
                         <th>Término</th>
+                        <th>Prioridade</th>
                         <th>Categoria</th>
                         <th>Status</th>
                         <th>Ações</th>
                     </tr>
                 </thead>
-                <tbody id="tarefa-tbody">
+                <tbody id="tarefas-tbody">
 
                 </tbody>
             </table>
@@ -106,6 +106,6 @@
         </section>
     </main>
 
-    <script></script>
+  <script src="script.js"></script>
 </body>
 </html>
